@@ -2,7 +2,7 @@
 
 Build Android Gradle project.
 
-Avaliable at https://hub.docker.com/r/bssthu/docker-android/ .
+Avaliable at https://hub.docker.com/r/bssthu/android/ .
 
 Source code at https://github.com/bssthu/docker-android .
 
