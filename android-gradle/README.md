@@ -1,5 +1,10 @@
 # android-gradle
 
+Build Android Gradle project.
+
+Avaliable at https://hub.docker.com/r/bssthu/docker-android/ .
+
+Source code at https://github.com/bssthu/docker-android .
 
 ## How to use
 
