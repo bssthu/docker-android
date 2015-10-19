@@ -1,6 +1,7 @@
 # android-gradle
 
 Build Android Gradle project.
+Emulator not included.
 
 Avaliable at https://hub.docker.com/r/bssthu/android/ .
 
