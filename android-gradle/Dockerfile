@@ -26,10 +26,10 @@ COPY tools /opt/tools
 RUN chmod +x /opt/tools/android-*.sh
 ENV PATH ${PATH}:/opt/tools
 RUN ["/opt/tools/android-accept-licenses.sh", "android update sdk --all --no-ui --filter \
-                platform-tools,build-tools-21,build-tools-21.0.1,build-tools-21.0.2, \
-                build-tools-21.1,build-tools-21.1.1,build-tools-21.1.2, \
-                android-21,extra-android-support,extra-android-m2repository, \
-                extra-google-m2repository,extra-google-google_play_services"]
+platform-tools,build-tools-21,build-tools-21.0.1,build-tools-21.0.2,\
+build-tools-21.1,build-tools-21.1.1,build-tools-21.1.2,\
+android-21,extra-android-support,extra-android-m2repository,\
+extra-google-m2repository,extra-google-google_play_services"]
 
 RUN which adb
 RUN which android
