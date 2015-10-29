@@ -40,13 +40,14 @@ build-tools-21.1,build-tools-21.1.1,build-tools-21.1.2,\
 android-21,extra-android-support,extra-android-m2repository,\
 extra-google-m2repository,extra-google-google_play_services"]
 
-RUN which adb
-RUN which android
+RUN which adb && \
+    which android
 
 # Install Gradle
 WORKDIR /usr/lib
 ENV GRADLE_VERSION 2.2.1
-RUN wget https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-all.zip && \
+RUN cd /usr/lib && \
+    wget https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-all.zip && \
     unzip -q gradle-${GRADLE_VERSION}-all.zip && \
     ln -s "/usr/lib/gradle-${GRADLE_VERSION}" /usr/bin/gradle && \
     rm gradle-${GRADLE_VERSION}-all.zip
