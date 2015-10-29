@@ -7,6 +7,8 @@ Avaliable at https://hub.docker.com/r/bssthu/android/ .
 
 Source code at https://github.com/bssthu/docker-android .
 
+[![Layers](https://badge.imagelayers.io/bssthu/android:latest.svg)](https://imagelayers.io/?images=bssthu/android:latest 'Get your own badge on imagelayers.io')
+
 ## How to use
 
 ### Build image
