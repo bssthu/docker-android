@@ -45,7 +45,7 @@ RUN which adb && \
 
 # Install Gradle
 WORKDIR /usr/lib
-ENV GRADLE_VERSION 2.2.1
+ENV GRADLE_VERSION 2.10
 RUN cd /usr/lib && \
     wget https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-all.zip && \
     unzip -q gradle-${GRADLE_VERSION}-all.zip && \
