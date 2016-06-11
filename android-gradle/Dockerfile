@@ -4,7 +4,8 @@ MAINTAINER bssthu
 
 # Install java7 and Deps
 
-RUN apt-get install -y --no-install-recommends software-properties-common && \
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends software-properties-common && \
     add-apt-repository -y ppa:webupd8team/java && \
     dpkg --add-architecture i386 && \
     apt-get update && \
