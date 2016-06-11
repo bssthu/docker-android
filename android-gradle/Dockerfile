@@ -14,7 +14,8 @@ RUN apt-get update && \
     apt-get install -y oracle-java7-installer && \
     apt-get install -y --force-yes --no-install-recommends expect git wget \
         libc6-i386 lib32stdc++6 lib32gcc1 lib32ncurses5 \
-        lib32z1 python python3-pip curl unzip && \
+        lib32z1 python curl unzip && \
+    apt-get install -y python3-pip && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rv /var/cache/oracle-jdk7-installer
