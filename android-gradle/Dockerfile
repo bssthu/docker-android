@@ -13,10 +13,13 @@ RUN apt-get install -y --no-install-recommends software-properties-common && \
     apt-get install -y oracle-java7-installer && \
     apt-get install -y --force-yes --no-install-recommends expect git wget \
         libc6-i386 lib32stdc++6 lib32gcc1 lib32ncurses5 \
-        lib32z1 python curl unzip && \
+        lib32z1 python python3-pip curl unzip && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rv /var/cache/oracle-jdk7-installer
+
+# Install Crypto
+RUN pip3 install pycrypto
 
 # Install Android SDK
 RUN cd /opt && \
