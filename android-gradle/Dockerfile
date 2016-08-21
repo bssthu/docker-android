@@ -22,7 +22,7 @@ RUN apt-get update && \
 # Install Android SDK
 RUN cd /opt && \
     wget --output-document=android-sdk.tgz --quiet \
-        http://dl.google.com/android/android-sdk_r24.3.3-linux.tgz  && \
+        https://dl.google.com/android/android-sdk_r24.4.1-linux.tgz  && \
     tar xzf android-sdk.tgz && \
     rm -f android-sdk.tgz && \
     chown -R root.root android-sdk-linux
@@ -36,9 +36,8 @@ COPY tools /opt/tools
 RUN chmod +x /opt/tools/android-*.sh
 ENV PATH ${PATH}:/opt/tools
 RUN ["/opt/tools/android-accept-licenses.sh", "android update sdk --all --no-ui --filter \
-platform-tools,build-tools-21,build-tools-21.0.1,build-tools-21.0.2,\
-build-tools-21.1,build-tools-21.1.1,build-tools-21.1.2,\
-android-21,extra-android-support,extra-android-m2repository,\
+platform-tools,build-tools-22,build-tools-22.0.1,\
+android-22,extra-android-support,extra-android-m2repository,\
 extra-google-m2repository,extra-google-google_play_services"]
 
 RUN which adb && \
@@ -46,7 +45,7 @@ RUN which adb && \
 
 # Install Gradle
 WORKDIR /usr/lib
-ENV GRADLE_VERSION 2.10
+ENV GRADLE_VERSION 2.14.1
 RUN cd /usr/lib && \
     wget https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-all.zip && \
     unzip -q gradle-${GRADLE_VERSION}-all.zip && \
