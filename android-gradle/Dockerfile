@@ -9,15 +9,12 @@ RUN apt-get update && \
     add-apt-repository -y ppa:webupd8team/java && \
     dpkg --add-architecture i386 && \
     apt-get update && \
-    echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true \
-        | /usr/bin/debconf-set-selections && \
-    apt-get install -y oracle-java7-installer && \
+    apt-get install -y openjdk-7-jdk && \
     apt-get install -y --force-yes --no-install-recommends expect git wget \
         libc6-i386 lib32stdc++6 lib32gcc1 lib32ncurses5 \
         lib32z1 python curl unzip && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/* && \
-    rm -rv /var/cache/oracle-jdk7-installer
+    rm -rf /var/lib/apt/lists/*
 
 # Install Android SDK
 RUN cd /opt && \
