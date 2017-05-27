@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 
 MAINTAINER bssthu
 
@@ -6,25 +6,21 @@ MAINTAINER bssthu
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends software-properties-common && \
-    add-apt-repository -y ppa:webupd8team/java && \
     dpkg --add-architecture i386 && \
     apt-get update && \
-    echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true \
-        | /usr/bin/debconf-set-selections && \
-    apt-get install -y oracle-java8-installer && \
+    apt-get install -y openjdk-8-jdk && \
     apt-get install -y --force-yes --no-install-recommends expect git wget \
         libc6-i386 lib32stdc++6 lib32gcc1 lib32ncurses5 \
         lib32z1 python curl unzip && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/* && \
-    rm -rv /var/cache/oracle-jdk8-installer
+    rm -rf /var/lib/apt/lists/*
 
 # Install Android SDK
 RUN cd /opt && \
-    wget --output-document=android-sdk.tgz --quiet \
-        https://dl.google.com/android/android-sdk_r24.4.1-linux.tgz  && \
-    tar xzf android-sdk.tgz && \
-    rm -f android-sdk.tgz && \
+    wget --output-document=tools.zip --quiet \
+        https://dl.google.com/android/repository/tools_r25.2.5-linux.zip  && \
+    unzip tools.zip -d android-sdk-linux && \
+    rm -f tools.zip && \
     chown -R root.root android-sdk-linux
 
 # Setup environment
@@ -36,8 +32,8 @@ COPY tools /opt/tools
 RUN chmod +x /opt/tools/android-*.sh
 ENV PATH ${PATH}:/opt/tools
 RUN ["/opt/tools/android-accept-licenses.sh", "android update sdk --all --no-ui --filter \
-platform-tools,build-tools-24,build-tools-24.0.1,\
-android-24,extra-android-support,extra-android-m2repository,\
+platform-tools,build-tools-25,build-tools-25.0.1,build-tools-25.0.2,build-tools-25.0.3,\
+android-25,extra-android-support,extra-android-m2repository,\
 extra-google-m2repository,extra-google-google_play_services"]
 
 RUN which adb && \
@@ -45,7 +41,7 @@ RUN which adb && \
 
 # Install Gradle
 WORKDIR /usr/lib
-ENV GRADLE_VERSION 2.10
+ENV GRADLE_VERSION 3.3
 RUN cd /usr/lib && \
     wget https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-all.zip && \
     unzip -q gradle-${GRADLE_VERSION}-all.zip && \
